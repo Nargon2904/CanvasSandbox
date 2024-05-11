@@ -31,6 +31,9 @@ let spY = 0;
 let arrX = [];
 let arrY = [];
 
+ctx.lineCap = "round";
+ctx.lineJoin = "round";
+
 Canvas.addEventListener("mousedown", (e) => {
     init(e);
     drawing=true;
@@ -80,9 +83,11 @@ const clearBtn = document.getElementById("clear-btn");
 const blackBtn = document.getElementById('black-btn');
 const redBtn = document.getElementById('red-btn');
 const colorPicker = document.getElementById('color-picker-input');
+const widthBtn = document.getElementById('cursor-width');
 
 clearBtn.addEventListener('click', () => {
-    ctx.clearRect(0,0, Canvas.width, Canvas.height);
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = '#ffffff';
 })
 blackBtn.addEventListener('click', () => {
     ctx.strokeStyle = '#000000';
@@ -94,4 +99,7 @@ redBtn.addEventListener('click', () => {
 })
 colorPicker.addEventListener('change', (e) => {
     ctx.strokeStyle = e.target.value;
+})
+widthBtn.addEventListener('click', (e) => {
+    ctx.lineWidth = e.target.value;
 })
